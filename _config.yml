@@ -1,0 +1,11 @@
+title: My Blog
+email: 
+description: My personal blog
+baseurl: 
+url: "https://ziyunguo-sec.github.io"
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+markdown: kramdown
+permalink: /:categories/:year/:month/:day/:title/
