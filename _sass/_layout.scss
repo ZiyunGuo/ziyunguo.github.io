@@ -78,27 +78,6 @@
 
 .nav-icon { font-size: 0.9em; }
 
-// Lang toggle button
-.lang-toggle {
-  margin-left: 0.5rem;
-  padding: 0.3rem 0.8rem;
-  border: 1px solid $color-border;
-  border-radius: $radius-pill;
-  background: $color-surface;
-  color: $color-muted;
-  font-family: $font-body;
-  font-size: 0.8rem;
-  cursor: pointer;
-  transition: all 0.2s;
-  flex-shrink: 0;
-
-  &:hover {
-    border-color: $color-accent;
-    color: $color-accent;
-    background: rgba($color-accent, 0.05);
-  }
-}
-
 // Mobile hamburger (CSS checkbox trick)
 .nav-toggle-input {
   display: none;

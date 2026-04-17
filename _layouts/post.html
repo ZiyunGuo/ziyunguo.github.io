@@ -11,7 +11,7 @@ layout: default
     <h1 class="post-title">{{ page.title }}</h1>
     <p class="post-meta">
       <time datetime="{{ page.date | date_to_xmlschema }}">
-        {{ page.date | date: "%Y年%m月%d日" }}
+        {{ page.date | date: "%B %d, %Y" }}
       </time>
       &nbsp;·&nbsp;
       <span>{{ content | number_of_words | divided_by: 200 | plus: 1 }} min read</span>
@@ -23,9 +23,6 @@ layout: default
   </div>
 
   <footer class="post-footer">
-    <a href="{{ '/blog/' | relative_url }}" class="btn-back">
-      <span class="lang-zh">← 返回博客</span>
-      <span class="lang-en">← Back to Blog</span>
-    </a>
+    <a href="{{ '/blog/' | relative_url }}" class="btn-back">← Back to Blog</a>
   </footer>
 </article>

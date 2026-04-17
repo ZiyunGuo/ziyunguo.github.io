@@ -70,7 +70,3 @@ hr {
 ul, ol { padding-left: 1.5rem; margin-bottom: 1rem; }
 li { margin-bottom: 0.25rem; }
 
-// Language toggle
-html[lang="zh"] .lang-en { display: none !important; }
-html[lang="en"] .lang-zh { display: none !important; }
-html:not([lang]) .lang-en { display: none !important; }

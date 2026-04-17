@@ -3,50 +3,22 @@
     <a class="site-brand" href="{{ '/' | relative_url }}">
       <span class="brand-icon">🌸</span>
       <span class="brand-text">
-        <span class="brand-main">Ziyun's Blog</span>
+        <span class="brand-main">Ziyun Guo</span>
         <span class="brand-sub">紫云の小窝</span>
       </span>
     </a>
 
     <input type="checkbox" id="nav-toggle" class="nav-toggle-input" aria-hidden="true" />
-    <label for="nav-toggle" class="nav-toggle-label" aria-label="打开菜单">
+    <label for="nav-toggle" class="nav-toggle-label" aria-label="Menu">
       <span></span><span></span><span></span>
     </label>
 
-    <nav class="site-nav" aria-label="主导航">
-      <a href="/" class="nav-link{% if page.url == '/' %} active{% endif %}">
-        <span class="lang-zh">首页</span><span class="lang-en">Home</span>
-      </a>
-      <a href="/#about" class="nav-link">
-        <span class="lang-zh">关于我</span><span class="lang-en">About</span>
-      </a>
-      <a href="/#research" class="nav-link">
-        <span class="lang-zh">研究</span><span class="lang-en">Research</span>
-      </a>
-      <a href="/#education" class="nav-link">
-        <span class="lang-zh">教育</span><span class="lang-en">Education</span>
-      </a>
-      <a href="/#friends" class="nav-link">
-        <span class="lang-zh">友链</span><span class="lang-en">Friends</span>
-      </a>
-      <a href="{{ '/blog/' | relative_url }}" class="nav-link{% if page.url contains '/blog' %} active{% endif %}">
-        <span class="lang-zh">博客</span><span class="lang-en">Blog</span>
-      </a>
-      <button class="lang-toggle" onclick="toggleLang()" aria-label="切换语言">EN / 中</button>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="/#about" class="nav-link">About</a>
+      <a href="/#research" class="nav-link">Research</a>
+      <a href="/#education" class="nav-link">Education</a>
+      <a href="/#friends" class="nav-link">Friends</a>
+      <a href="{{ '/blog/' | relative_url }}" class="nav-link{% if page.url contains '/blog' %} active{% endif %}">Blog</a>
     </nav>
   </div>
 </header>
-
-<script>
-  (function() {
-    var saved = localStorage.getItem('lang') || 'zh';
-    document.documentElement.setAttribute('lang', saved);
-  })();
-
-  function toggleLang() {
-    var current = document.documentElement.getAttribute('lang') || 'zh';
-    var next = current === 'zh' ? 'en' : 'zh';
-    document.documentElement.setAttribute('lang', next);
-    localStorage.setItem('lang', next);
-  }
-</script>

@@ -1,24 +1,15 @@
 ---
 layout: default
-title: "首页"
+title: "Home"
 permalink: /
 ---
 
 <!-- Hero -->
 <section class="hero animate-fade-in">
-  <p class="hero-greeting">
-    <span class="lang-zh">你好，我是紫云 ✨</span>
-    <span class="lang-en">Hi, I'm Ziyun ✨</span>
-  </p>
-  <p class="hero-sub">
-    <span class="lang-zh">安全研究者 · 终身学习者</span>
-    <span class="lang-en">Security Researcher · Lifelong Learner</span>
-  </p>
+  <p class="hero-greeting">Hi, I'm Ziyun ✨</p>
+  <p class="hero-sub">Security Researcher · Lifelong Learner</p>
   <div class="hero-actions">
-    <a href="/blog/" class="btn btn-primary">
-      <span class="lang-zh">✍️ 看看博客</span>
-      <span class="lang-en">✍️ Read Blog</span>
-    </a>
+    <a href="/blog/" class="btn btn-primary">✍️ Read Blog</a>
     <a href="mailto:zyguo@smu.edu.sg" class="btn btn-outline">📧 Email</a>
     <a href="https://github.com/ZiyunGuo-Sec" class="btn btn-outline" target="_blank" rel="noopener">🐙 GitHub</a>
   </div>
@@ -26,36 +17,24 @@ permalink: /
 
 <!-- About -->
 <section id="about" class="sp-section animate-fade-in">
-  <h2 class="section-title">
-    <span class="lang-zh">关于我</span>
-    <span class="lang-en">About</span>
-  </h2>
+  <h2 class="section-title">About</h2>
   <div class="card">
     <div class="profile-card" style="margin-bottom:0;">
       <div class="profile-avatar">🌸</div>
       <div class="profile-info">
-        <h3 style="font-size:1.2rem; margin-bottom:0.25rem;">Ziyun Guo · 紫云</h3>
+        <h3 style="font-size:1.2rem; margin-bottom:0.25rem;">Ziyun Guo</h3>
         <p class="profile-tagline">Research Engineer, Singapore Management University (SMU)</p>
       </div>
     </div>
     <hr style="margin:1.25rem 0; border-color:#f0d6eb;" />
-    <div class="lang-zh">
-      <p>我目前是新加坡管理大学（SMU）计算机科学系的研究工程师，此前于南洋理工大学（NTU）取得网络安全硕士学位。研究方向聚焦于<strong>软件安全与智能化测试</strong>，具体包括 GUI 自动化测试与网络安全。</p>
-      <p>🌍 当前主要研究方向：GUI 测试自动化 · 渗透测试 · 静态分析 · Fuzzing（学习中 🌱）</p>
-    </div>
-    <div class="lang-en">
-      <p>I am a Research Engineer in Computer Science at Singapore Management University (SMU). Prior to that, I received my Master's degree in Cyber Security from Nanyang Technological University (NTU), Singapore. My research interests lie at the intersection of <strong>software security and intelligent testing</strong>, covering GUI testing automation and cybersecurity.</p>
-      <p>🌍 Current interests: GUI Testing · Penetration Testing · Static Analysis · Fuzzing (in progress 🌱)</p>
-    </div>
+    <p>I am a Research Engineer in Computer Science at Singapore Management University (SMU). Prior to that, I received my Master's degree in Cyber Security from Nanyang Technological University (NTU), Singapore. My research interests lie at the intersection of <strong>software security and intelligent testing</strong>, covering GUI testing automation and cybersecurity.</p>
+    <p>🌍 Current interests: GUI Testing · Penetration Testing · Static Analysis · Fuzzing (in progress 🌱)</p>
   </div>
 </section>
 
 <!-- Research -->
 <section id="research" class="sp-section animate-fade-in">
-  <h2 class="section-title">
-    <span class="lang-zh">研究经历</span>
-    <span class="lang-en">Research Experience</span>
-  </h2>
+  <h2 class="section-title">Research Experience</h2>
   <div class="timeline">
 
     <div class="timeline-entry">
@@ -103,19 +82,13 @@ permalink: /
 
 <!-- Internship -->
 <section id="experience" class="sp-section animate-fade-in">
-  <h2 class="section-title">
-    <span class="lang-zh">实习经历</span>
-    <span class="lang-en">Internship Experience</span>
-  </h2>
+  <h2 class="section-title">Internship Experience</h2>
   <div class="timeline">
 
     <div class="timeline-entry">
       <div class="timeline-date">Oct 2023 – Jan 2024</div>
       <div class="timeline-title">NetEase · Beijing</div>
-      <div class="timeline-sub">
-        <span class="lang-zh">实习生，质量保证部</span>
-        <span class="lang-en">Intern, Quality Assurance Department</span>
-      </div>
+      <div class="timeline-sub">Intern, Quality Assurance Department</div>
       <ul>
         <li>Conducted quality checks for multiple projects during release phases.</li>
         <li>Participated in regression GUI testing, ensuring software stability and integrity after updates.</li>
@@ -126,10 +99,7 @@ permalink: /
     <div class="timeline-entry">
       <div class="timeline-date">May 2023 – Jun 2023</div>
       <div class="timeline-title">NSFOCUS Technologies Group · Chengdu</div>
-      <div class="timeline-sub">
-        <span class="lang-zh">实习生，网络安全技术部</span>
-        <span class="lang-en">Intern, Cybersecurity Technology Department</span>
-      </div>
+      <div class="timeline-sub">Intern, Cybersecurity Technology Department</div>
       <ul>
         <li>Tested and developed the next-generation gateway firewall.</li>
         <li>Designed test cases covering extensive API parameters and detected multiple bugs.</li>
@@ -142,10 +112,7 @@ permalink: /
 
 <!-- Education -->
 <section id="education" class="sp-section animate-fade-in">
-  <h2 class="section-title">
-    <span class="lang-zh">教育背景</span>
-    <span class="lang-en">Education</span>
-  </h2>
+  <h2 class="section-title">Education</h2>
   <div class="timeline">
 
     <div class="timeline-entry">
@@ -156,10 +123,7 @@ permalink: /
 
     <div class="timeline-entry">
       <div class="timeline-date">Sep 2020 – Jun 2024</div>
-      <div class="timeline-title">
-        <span class="lang-zh">本科</span>
-        <span class="lang-en">Undergraduate</span>
-      </div>
+      <div class="timeline-title">Undergraduate</div>
       <div class="timeline-sub">Bachelor of Engineering in Cyber Security</div>
     </div>
 
@@ -168,13 +132,10 @@ permalink: /
 
 <!-- Skills -->
 <section id="skills" class="sp-section animate-fade-in">
-  <h2 class="section-title">
-    <span class="lang-zh">技能</span>
-    <span class="lang-en">Skills</span>
-  </h2>
+  <h2 class="section-title">Skills</h2>
   <div class="skills-grid">
     <div class="skill-group">
-      <h3><span class="lang-zh">编程语言</span><span class="lang-en">Programming</span></h3>
+      <h3>Programming</h3>
       <div class="skill-tags">
         <span class="tag tag-pink">Python</span>
         <span class="tag tag-pink">Java</span>
@@ -195,7 +156,7 @@ permalink: /
       </div>
     </div>
     <div class="skill-group">
-      <h3><span class="lang-zh">测试与安全</span><span class="lang-en">Testing & Security</span></h3>
+      <h3>Testing & Security</h3>
       <div class="skill-tags">
         <span class="tag">GUI Testing</span>
         <span class="tag">Mobile Testing</span>
@@ -209,10 +170,7 @@ permalink: /
 
 <!-- Friends -->
 <section id="friends" class="sp-section animate-fade-in">
-  <h2 class="section-title">
-    <span class="lang-zh">友链</span>
-    <span class="lang-en">Friends</span>
-  </h2>
+  <h2 class="section-title">Friends</h2>
   <div class="friends-grid">
     {% for friend in site.data.friends %}
     <a class="friend-card" href="{{ friend.url }}" target="_blank" rel="noopener noreferrer">
