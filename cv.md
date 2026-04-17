@@ -22,7 +22,7 @@ permalink: /cv/
     <div class="timeline-date">Sep 2020 – Jun 2024</div>
     <div class="timeline-title">
       <span class="lang-zh">本科</span>
-      <span class="lang-en">Undergraduate</span>
+      <span class="lang-en">Sichuan University</span>
     </div>
     <div class="timeline-sub">Bachelor of Engineering in Cyber Security</div>
   </div>
@@ -38,15 +38,6 @@ permalink: /cv/
 </h2>
 <div class="timeline">
 
-  <div class="timeline-entry animate-fade-in">
-    <div class="timeline-date">Jul 2025 – Present</div>
-    <div class="timeline-title">Identifying Compatibility Issues in LLM-powered Webpages</div>
-    <div class="timeline-sub">Singapore Management University (SMU)</div>
-    <ul>
-      <li>Participate in an empirical study on cross-browser and cross-device issues in LLM-generated webpages.</li>
-      <li>Contribute to the design of a test oracle and automated framework for evaluating UI rendering consistency across platforms.</li>
-      <li>Analyze incompatibility patterns between LLM-generated and human-developed webpages, and explore mitigation strategies.</li>
-    </ul>
   </div>
 
   <div class="timeline-entry animate-fade-in">

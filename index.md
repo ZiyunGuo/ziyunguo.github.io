@@ -10,8 +10,8 @@ permalink: /
     <span class="lang-en">Hi, I'm Ziyun ✨</span>
   </p>
   <p class="hero-sub">
-    <span class="lang-zh">安全研究者 · 终身学习者</span>
-    <span class="lang-en">Security Researcher · Lifelong Learner</span>
+    <span class="lang-zh">研发工程师 · 新加坡管理大学</span>
+    <span class="lang-en">Research Engineer · Singapore Management University</span>
   </p>
   <div class="hero-actions">
     <a href="/blog/" class="btn btn-primary">
