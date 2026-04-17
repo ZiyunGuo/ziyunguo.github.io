@@ -14,25 +14,23 @@
     </label>
 
     <nav class="site-nav" aria-label="主导航">
-      <a href="{{ '/' | relative_url }}" class="nav-link{% if page.url == '/' %} active{% endif %}">
-        <span class="nav-icon">🏠</span>
+      <a href="/" class="nav-link{% if page.url == '/' %} active{% endif %}">
         <span class="lang-zh">首页</span><span class="lang-en">Home</span>
       </a>
-      <a href="{{ '/about/' | relative_url }}" class="nav-link{% if page.url contains '/about' %} active{% endif %}">
-        <span class="nav-icon">💜</span>
+      <a href="/#about" class="nav-link">
         <span class="lang-zh">关于我</span><span class="lang-en">About</span>
       </a>
-      <a href="{{ '/cv/' | relative_url }}" class="nav-link{% if page.url contains '/cv' %} active{% endif %}">
-        <span class="nav-icon">📄</span>
-        <span class="lang-zh">简历</span><span class="lang-en">CV</span>
+      <a href="/#research" class="nav-link">
+        <span class="lang-zh">研究</span><span class="lang-en">Research</span>
+      </a>
+      <a href="/#education" class="nav-link">
+        <span class="lang-zh">教育</span><span class="lang-en">Education</span>
+      </a>
+      <a href="/#friends" class="nav-link">
+        <span class="lang-zh">友链</span><span class="lang-en">Friends</span>
       </a>
       <a href="{{ '/blog/' | relative_url }}" class="nav-link{% if page.url contains '/blog' %} active{% endif %}">
-        <span class="nav-icon">✍️</span>
         <span class="lang-zh">博客</span><span class="lang-en">Blog</span>
-      </a>
-      <a href="{{ '/friends/' | relative_url }}" class="nav-link{% if page.url contains '/friends' %} active{% endif %}">
-        <span class="nav-icon">🔗</span>
-        <span class="lang-zh">友链</span><span class="lang-en">Friends</span>
       </a>
       <button class="lang-toggle" onclick="toggleLang()" aria-label="切换语言">EN / 中</button>
     </nav>
