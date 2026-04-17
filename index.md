@@ -10,8 +10,8 @@ permalink: /
   <p class="hero-sub">Research Engineer · Singapore Management University</p>
   <p class="hero-meta">
     📍 Singapore &nbsp;·&nbsp;
-    <a href="mailto:zyguo@smu.edu.sg">zyguo@smu.edu.sg</a> &nbsp;·&nbsp;
-    <a href="https://github.com/ZiyunGuo-Sec" target="_blank" rel="noopener">GitHub</a>
+    <a href="mailto:zyguo@smu.edu.sg"><i class="fa-solid fa-envelope"></i> zyguo@smu.edu.sg</a> &nbsp;·&nbsp;
+    <a href="https://github.com/ZiyunGuo-Sec" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> ZiyunGuo-Sec</a>
   </p>
 </section>
 
