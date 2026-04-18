@@ -6,14 +6,218 @@ permalink: /
 
 <!-- Hero -->
 <section class="hero animate-fade-in">
-  <img src="/assets/images/avatar.png" alt="Ziyun Guo" class="hero-avatar" />
-  <p class="hero-greeting">Ziyun Guo</p>
-  <p class="hero-sub">Research Engineer · Singapore Management University</p>
-  <p class="hero-meta">
-    📍 Singapore &nbsp;·&nbsp;
-    <a href="mailto:zyguo@smu.edu.sg"><i class="fa-solid fa-envelope"></i> zyguo@smu.edu.sg</a> &nbsp;·&nbsp;
-    <a href="https://github.com/ZiyunGuo" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> ZiyunGuo</a>
-  </p>
+  <div class="hero-main">
+    <div class="hero-left">
+      <img src="/assets/images/avatar.png" alt="Ziyun Guo" class="hero-avatar" />
+      <p class="hero-greeting">Ziyun Guo</p>
+      <p class="hero-sub">Research Engineer · Singapore Management University</p>
+    </div>
+    <div class="hero-divider" aria-hidden="true"></div>
+    <div class="hero-right">
+      <p class="hero-meta-item"><span class="hero-meta-icon">📍</span><span>Singapore</span></p>
+      <p class="hero-meta-item"><i class="fa-solid fa-envelope"></i><a href="mailto:zyguo@smu.edu.sg">zyguo@smu.edu.sg</a></p>
+      <p class="hero-meta-item"><i class="fa-brands fa-github"></i><a href="https://github.com/ZiyunGuo" target="_blank" rel="noopener">ZiyunGuo</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- Post Heatmap -->
+<section id="post-heatmap" class="sp-section animate-fade-in">
+  <h2 class="section-title">Post Activity</h2>
+  <div class="card post-heatmap-card">
+    <div class="post-heatmap-head">
+      <p class="post-heatmap-sub">Updates in the last 12 months</p>
+      <p class="post-heatmap-summary" id="post-heatmap-summary">Loading activity...</p>
+    </div>
+    <div class="post-heatmap-wrap">
+      <div class="post-heatmap-months" id="post-heatmap-months" aria-hidden="true"></div>
+      <div class="post-heatmap-grid" id="post-heatmap-grid" aria-label="Post activity heatmap"></div>
+    </div>
+    <div class="post-heatmap-meta">
+      <p class="post-heatmap-tooltip" id="post-heatmap-tooltip">Hover a square to see details.</p>
+      <div class="post-heatmap-legend" aria-hidden="true">
+        <span>Less</span>
+        <span class="post-heatmap-cell level-0"></span>
+        <span class="post-heatmap-cell level-1"></span>
+        <span class="post-heatmap-cell level-2"></span>
+        <span class="post-heatmap-cell level-3"></span>
+        <span class="post-heatmap-cell level-4"></span>
+        <span>More</span>
+      </div>
+    </div>
+    <div class="post-heatmap-daylist" id="post-heatmap-daylist">
+      <p class="post-heatmap-daylist-title" id="post-heatmap-daylist-title">Click a day to view updated posts.</p>
+      <ul class="post-heatmap-daylist-items" id="post-heatmap-daylist-items"></ul>
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      const posts = [
+        {% for post in site.posts %}
+          {
+            date: "{{ post.date | date: '%Y-%m-%d' }}",
+            title: {{ post.title | jsonify }},
+            url: "{{ post.url | relative_url }}"
+          }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ];
+
+      const grid = document.getElementById("post-heatmap-grid");
+      const months = document.getElementById("post-heatmap-months");
+      const summary = document.getElementById("post-heatmap-summary");
+      const tooltip = document.getElementById("post-heatmap-tooltip");
+      const daylistTitle = document.getElementById("post-heatmap-daylist-title");
+      const daylistItems = document.getElementById("post-heatmap-daylist-items");
+
+      if (!grid || !months || !summary || !tooltip || !daylistTitle || !daylistItems) return;
+
+      const byDay = new Map();
+      posts.forEach((post) => {
+        if (!byDay.has(post.date)) byDay.set(post.date, []);
+        byDay.get(post.date).push(post);
+      });
+
+      const toISODate = (date) => {
+        const y = date.getFullYear();
+        const m = String(date.getMonth() + 1).padStart(2, "0");
+        const d = String(date.getDate()).padStart(2, "0");
+        return `${y}-${m}-${d}`;
+      };
+
+      const formatDate = (date) =>
+        date.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
+
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+
+      const firstVisible = new Date(today);
+      firstVisible.setDate(firstVisible.getDate() - 364);
+
+      const mondayOffset = (firstVisible.getDay() + 6) % 7;
+      const gridStart = new Date(firstVisible);
+      gridStart.setDate(gridStart.getDate() - mondayOffset);
+
+      const weeks = 53;
+      const maxCount = Math.max(
+        0,
+        ...Array.from(byDay.values()).map((items) => items.length)
+      );
+
+      const getLevel = (count) => {
+        if (count === 0) return 0;
+        if (maxCount <= 4) return Math.min(4, count);
+        return Math.min(4, Math.ceil((count / maxCount) * 4));
+      };
+
+      let activeDays = 0;
+      let totalPosts = 0;
+      let selectedCell = null;
+
+      const showDayPosts = (date, entries) => {
+        const count = entries.length;
+        daylistTitle.textContent = `${formatDate(date)} · ${count} post${count === 1 ? "" : "s"}`;
+        daylistItems.innerHTML = "";
+
+        if (count === 0) {
+          const li = document.createElement("li");
+          li.textContent = "No post updated on this day.";
+          daylistItems.appendChild(li);
+          return;
+        }
+
+        entries.forEach((item) => {
+          const li = document.createElement("li");
+          const link = document.createElement("a");
+          link.href = item.url;
+          link.textContent = item.title;
+          li.appendChild(link);
+          daylistItems.appendChild(li);
+        });
+      };
+
+      for (let week = 0; week < weeks; week += 1) {
+        const weekStart = new Date(gridStart);
+        weekStart.setDate(gridStart.getDate() + week * 7);
+
+        const monthCell = document.createElement("span");
+        monthCell.className = "post-heatmap-month";
+
+        for (let day = 0; day < 7; day += 1) {
+          const date = new Date(weekStart);
+          date.setDate(weekStart.getDate() + day);
+          const inRange = date >= firstVisible && date <= today;
+          if (inRange && date.getDate() === 1) {
+            monthCell.textContent = date.toLocaleDateString("en-US", { month: "short" });
+            break;
+          }
+        }
+
+        months.appendChild(monthCell);
+      }
+
+      for (let week = 0; week < weeks; week += 1) {
+        const column = document.createElement("div");
+        column.className = "post-heatmap-week";
+
+        for (let day = 0; day < 7; day += 1) {
+          const date = new Date(gridStart);
+          date.setDate(gridStart.getDate() + week * 7 + day);
+
+          const dateKey = toISODate(date);
+          const entries = byDay.get(dateKey) || [];
+          const count = entries.length;
+          const isFuture = date > today;
+          const inRange = date >= firstVisible && date <= today;
+
+          if (inRange && count > 0) {
+            activeDays += 1;
+            totalPosts += count;
+          }
+
+          const cell = document.createElement("button");
+          cell.type = "button";
+          cell.className = `post-heatmap-cell level-${getLevel(count)}`;
+          if (isFuture) cell.classList.add("is-future");
+          if (!inRange) cell.classList.add("is-out-range");
+
+          const details = entries.length
+            ? entries.map((item) => item.title).join(" | ")
+            : "No posts";
+          const label = `${formatDate(date)}: ${count} post${count === 1 ? "" : "s"}. ${details}`;
+          cell.setAttribute("aria-label", label);
+          cell.dataset.info = label;
+
+          if (inRange && !isFuture) {
+            cell.classList.add("is-interactive");
+            cell.addEventListener("click", () => {
+              if (selectedCell) selectedCell.classList.remove("is-selected");
+              cell.classList.add("is-selected");
+              selectedCell = cell;
+              showDayPosts(date, entries);
+            });
+          } else {
+            cell.tabIndex = -1;
+            cell.setAttribute("aria-disabled", "true");
+          }
+
+          const showInfo = () => {
+            tooltip.textContent = label;
+          };
+          cell.addEventListener("mouseenter", showInfo);
+          cell.addEventListener("focus", showInfo);
+
+          column.appendChild(cell);
+        }
+
+        grid.appendChild(column);
+      }
+
+      summary.textContent = `${totalPosts} post${totalPosts === 1 ? "" : "s"} across ${activeDays} active day${activeDays === 1 ? "" : "s"}.`;
+
+      showDayPosts(today, byDay.get(toISODate(today)) || []);
+    })();
+  </script>
 </section>
 
 <!-- About -->

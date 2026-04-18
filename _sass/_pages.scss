@@ -2,8 +2,8 @@
 .hero {
   background: $gradient-hero;
   border-radius: $radius-lg;
-  padding: 3.5rem 2rem;
-  text-align: center;
+  padding: 2rem 1.6rem;
+  text-align: left;
   margin-bottom: 2.5rem;
   position: relative;
   overflow: hidden;
@@ -19,41 +19,68 @@
   &::after  { bottom: 1rem; right: 1.5rem; font-size: 1rem; animation-delay: 1.5s; }
 }
 
+.hero-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.hero-left {
+  text-align: center;
+}
+
+.hero-right {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  align-items: flex-start;
+}
+
+.hero-divider {
+  width: 1px;
+  align-self: stretch;
+  background: linear-gradient(to bottom, rgba($color-accent, 0.1), rgba($color-accent, 0.45), rgba($color-accent, 0.1));
+}
+
 .hero-avatar {
-  width: 96px;
-  height: 96px;
+  width: 78px;
+  height: 78px;
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid rgba($color-accent, 0.4);
   box-shadow: 0 0 0 5px rgba($color-accent, 0.1);
-  margin: 0 auto 1rem;
+  margin: 0 auto 0.75rem;
   display: block;
 }
 
 .hero-greeting {
-  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  font-size: clamp(1.35rem, 3.5vw, 2.1rem);
   font-weight: 700;
   background: linear-gradient(135deg, $color-accent 0%, $color-accent-2 50%, $color-accent-3 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.45rem;
   line-height: 1.2;
 }
 
 .hero-sub {
-  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  font-size: clamp(0.82rem, 1.8vw, 1rem);
   color: $color-muted;
-  margin-bottom: 1.75rem;
+  margin-bottom: 0;
   max-width: 500px;
   margin-inline: auto;
 }
 
-.hero-meta {
-  font-size: 0.92rem;
+.hero-meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0;
+  font-size: 0.9rem;
   color: $color-muted;
-  margin-top: 0.5rem;
-  margin-bottom: 0;
+
   a {
     color: $color-muted;
     text-decoration: underline;
@@ -62,11 +89,215 @@
   }
 }
 
+.hero-meta-icon {
+  display: inline-block;
+  width: 0.95rem;
+  text-align: center;
+}
+
+@media (max-width: 760px) {
+  .hero {
+    padding: 1.6rem 1.1rem;
+  }
+
+  .hero-main {
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+  }
+
+  .hero-divider {
+    width: 100%;
+    height: 1px;
+    align-self: auto;
+    background: linear-gradient(to right, rgba($color-accent, 0.1), rgba($color-accent, 0.45), rgba($color-accent, 0.1));
+  }
+
+  .hero-right {
+    align-items: center;
+  }
+
+  .hero-meta-item {
+    justify-content: center;
+  }
+}
+
 .hero-actions {
   display: flex;
   gap: 0.75rem;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+// ── Post heatmap ────────────────────────────────────────
+.post-heatmap-card {
+  padding: 1.25rem 1.35rem;
+}
+
+.post-heatmap-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.9rem;
+}
+
+.post-heatmap-sub {
+  margin: 0;
+  color: $color-muted;
+  font-size: 0.84rem;
+}
+
+.post-heatmap-summary {
+  margin: 0;
+  font-size: 0.84rem;
+  color: darken($color-muted, 10%);
+}
+
+.post-heatmap-wrap {
+  overflow-x: auto;
+  padding-bottom: 0.35rem;
+}
+
+.post-heatmap-grid {
+  display: inline-flex;
+  gap: 0.22rem;
+  min-width: max-content;
+}
+
+.post-heatmap-months {
+  display: inline-flex;
+  gap: 0.22rem;
+  min-width: max-content;
+  margin-bottom: 0.28rem;
+}
+
+.post-heatmap-month {
+  width: 11px;
+  text-align: left;
+  font-size: 0.62rem;
+  color: rgba($color-muted, 0.9);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.post-heatmap-week {
+  display: grid;
+  grid-template-rows: repeat(7, 1fr);
+  gap: 0.22rem;
+}
+
+.post-heatmap-cell {
+  width: 11px;
+  height: 11px;
+  border-radius: 3px;
+  border: 1px solid rgba($color-accent, 0.12);
+  background: rgba($color-accent-2, 0.06);
+  padding: 0;
+  cursor: default;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+
+  &:focus-visible,
+  &:hover {
+    transform: scale(1.12);
+    border-color: rgba($color-accent, 0.55);
+    outline: none;
+  }
+
+  &.level-0 { background: rgba($color-accent-2, 0.06); }
+  &.level-1 { background: rgba($color-accent-3, 0.25); }
+  &.level-2 { background: rgba($color-accent-2, 0.35); }
+  &.level-3 { background: rgba($color-accent, 0.45); }
+  &.level-4 { background: rgba($color-accent, 0.75); }
+
+  &.is-out-range,
+  &.is-future {
+    opacity: 0.35;
+  }
+
+  &.is-interactive {
+    cursor: pointer;
+  }
+
+  &.is-selected {
+    border-color: rgba($color-accent, 0.85);
+    box-shadow: 0 0 0 1px rgba($color-accent, 0.35);
+  }
+}
+
+.post-heatmap-meta {
+  margin-top: 0.85rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.8rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.post-heatmap-tooltip {
+  margin: 0;
+  font-size: 0.8rem;
+  color: $color-muted;
+}
+
+.post-heatmap-legend {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: $color-muted;
+  font-size: 0.76rem;
+}
+
+.post-heatmap-daylist {
+  margin-top: 0.9rem;
+  padding-top: 0.85rem;
+  border-top: 1px dashed rgba($color-accent, 0.2);
+}
+
+.post-heatmap-daylist-title {
+  margin: 0 0 0.4rem;
+  font-size: 0.84rem;
+  color: darken($color-muted, 12%);
+}
+
+.post-heatmap-daylist-items {
+  margin: 0;
+  padding-left: 1.1rem;
+  font-size: 0.84rem;
+  color: $color-muted;
+
+  li {
+    margin: 0.2rem 0;
+  }
+
+  a {
+    color: $color-accent-2;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+
+    &:hover {
+      color: $color-accent;
+    }
+  }
+}
+
+@media (max-width: 760px) {
+  .post-heatmap-card {
+    padding: 1rem;
+  }
+
+  .post-heatmap-month {
+    width: 10px;
+  }
+
+  .post-heatmap-cell {
+    width: 10px;
+    height: 10px;
+  }
+
+  .post-heatmap-tooltip {
+    font-size: 0.76rem;
+  }
 }
 
 // ── Homepage sections ────────────────────────────────────

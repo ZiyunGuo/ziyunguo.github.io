@@ -183,7 +183,7 @@
 
 .friend-card {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 1rem;
   padding: 1rem 1.25rem;
   background: $gradient-card;
@@ -236,9 +236,10 @@
 .friend-desc {
   font-size: 0.78rem;
   color: $color-muted;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  line-height: 1.45;
 }
 
 .friend-icon {
